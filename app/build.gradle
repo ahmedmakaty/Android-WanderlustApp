@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "mediaclub.app.appwanderlust"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.pkmmte.view:circularimageview:1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
+    compile 'com.google.android.gms:play-services-location:8.3.0'
+    compile 'pl.charmas.android:android-reactive-location:0.8@aar'
+    compile 'io.reactivex:rxandroid:0.25.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'com.mikhaellopez:circularimageview:3.0.1'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile 'io.realm:realm-android:0.87.5'
+}

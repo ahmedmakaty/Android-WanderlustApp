@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="30dp"
+    android:background="@color/colorPrimary">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_1"
+            android:checked="true"
+            android:icon="@drawable/ic_account_box_white_24dp"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_item_2"
+            android:icon="@drawable/ic_chat"
+            android:title="Chat" />
+
+        <item
+            android:id="@+id/nav_item_3"
+            android:icon="@drawable/ic_nearby"
+            android:title="Nearby" />
+
+        <item
+            android:id="@+id/nav_item_4"
+            android:icon="@drawable/ic_diary"
+            android:title="Diary" />
+
+
+    </group>
+
+    <!--<group-->
+        <!--android:id="@+id/second_group"-->
+        <!--android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_item_5"-->
+            <!--android:title="Group Label">-->
+            <!--<menu>-->
+                <!--<item-->
+                    <!--android:id="@+id/nav_item_6"-->
+                    <!--android:icon="@drawable/ic_favorite_black_24dp"-->
+                    <!--android:title="Favorites" />-->
+
+                <!--<item-->
+                    <!--android:id="@+id/nav_item_7"-->
+                    <!--android:icon="@drawable/ic_build_black_24dp"-->
+                    <!--android:title="Settings" />-->
+            <!--</menu>-->
+        <!--</item>-->
+    <!--</group>-->
+</menu>

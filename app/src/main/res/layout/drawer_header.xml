@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/ic_drawer_image"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_default"
+        android:layout_above="@+id/name"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="5dp"
+        app:civ_border_color="#EEEEEE"
+        app:civ_border_width="0dp"
+        app:civ_shadow="true"
+        app:civ_shadow_radius="10"
+        app:civ_shadow_color="#BDBDBD"/>
+
+
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Logout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Firsr Last"
+        android:layout_above="@+id/email"
+        android:layout_alignParentLeft="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="ahmedmakaty@gmail.com"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp" />
+
+</RelativeLayout>
