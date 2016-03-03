@@ -1,13 +1,10 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,20 +23,19 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
+import mediaclub.app.appwanderlust.R;
 
 /**
- * Created by Bloom on 28/1/2016.
+ * Created by Bloom on 8/2/2016.
  */
-public class EditGridAdapter extends RecyclerView.Adapter<EditGridAdapter.GroupViewHolder> {
+public class EditPostImagesAdapter extends RecyclerView.Adapter<EditPostImagesAdapter.GroupViewHolder> {
 
     List<String> images = new ArrayList<String>();
     LayoutInflater layoutInflater;
@@ -48,7 +43,7 @@ public class EditGridAdapter extends RecyclerView.Adapter<EditGridAdapter.GroupV
     boolean selected;
     int index;
 
-    public EditGridAdapter(Context context, List<String> images) {
+    public EditPostImagesAdapter(Context context, List<String> images) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.images = images;
@@ -117,7 +112,7 @@ public class EditGridAdapter extends RecyclerView.Adapter<EditGridAdapter.GroupV
 
                     String tag_json_obj = "json_obj_req";
 
-                    String url = "http://appwanderlust.com/appapi/delete_user_image.php";
+                    String url = "http://appwanderlust.com/appapi/delete_post_image.php";
 
                     final ProgressDialog pDialog = new ProgressDialog(context);
                     pDialog.setMessage("Loading...");

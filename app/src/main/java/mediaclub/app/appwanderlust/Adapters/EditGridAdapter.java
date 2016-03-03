@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,11 +30,12 @@ import java.util.Map;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
+import mediaclub.app.appwanderlust.R;
 
 /**
- * Created by Bloom on 8/2/2016.
+ * Created by Bloom on 28/1/2016.
  */
-public class EditPostImagesAdapter extends RecyclerView.Adapter<EditPostImagesAdapter.GroupViewHolder> {
+public class EditGridAdapter extends RecyclerView.Adapter<EditGridAdapter.GroupViewHolder> {
 
     List<String> images = new ArrayList<String>();
     LayoutInflater layoutInflater;
@@ -43,7 +43,7 @@ public class EditPostImagesAdapter extends RecyclerView.Adapter<EditPostImagesAd
     boolean selected;
     int index;
 
-    public EditPostImagesAdapter(Context context, List<String> images) {
+    public EditGridAdapter(Context context, List<String> images) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.images = images;
@@ -112,7 +112,7 @@ public class EditPostImagesAdapter extends RecyclerView.Adapter<EditPostImagesAd
 
                     String tag_json_obj = "json_obj_req";
 
-                    String url = "http://appwanderlust.com/appapi/delete_post_image.php";
+                    String url = "http://appwanderlust.com/appapi/delete_user_image.php";
 
                     final ProgressDialog pDialog = new ProgressDialog(context);
                     pDialog.setMessage("Loading...");

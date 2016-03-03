@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mediaclub.app.appwanderlust.DataModels.Message;
+import mediaclub.app.appwanderlust.R;
 
 /**
  * Created by Bloom on 24/2/2016.

@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
+import mediaclub.app.appwanderlust.SliderImage;
 
 /**
  * Created by Bloom on 9/2/2016.

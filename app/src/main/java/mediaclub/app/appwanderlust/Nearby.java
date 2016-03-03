@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import mediaclub.app.appwanderlust.Adapters.NearbyGridAdapter;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
 import mediaclub.app.appwanderlust.DataModels.User;
 import mediaclub.app.appwanderlust.app.Config;

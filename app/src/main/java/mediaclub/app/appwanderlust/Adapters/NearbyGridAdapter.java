@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import java.util.List;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.DataModels.User;
+import mediaclub.app.appwanderlust.DisplayUserActivity;
+import mediaclub.app.appwanderlust.R;
 
 /**
  * Created by Bloom on 28/1/2016.

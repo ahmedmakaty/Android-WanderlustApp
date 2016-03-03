@@ -1,6 +1,5 @@
 package mediaclub.app.appwanderlust;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +17,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
@@ -50,7 +48,6 @@ import com.soundcloud.android.crop.Crop;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -58,13 +55,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import mediaclub.app.appwanderlust.Adapters.EditGridAdapter;
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
 import mediaclub.app.appwanderlust.RealmModels.lUser;

@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.os.PersistableBundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,9 +38,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import mediaclub.app.appwanderlust.Adapters.GridAdapter;
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
-import mediaclub.app.appwanderlust.DataModels.Post;
 import mediaclub.app.appwanderlust.app.Config;
 import mediaclub.app.appwanderlust.gcm.NotificationUtils;
 

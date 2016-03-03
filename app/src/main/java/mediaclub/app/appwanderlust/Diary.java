@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import mediaclub.app.appwanderlust.Adapters.DiaryAdapter;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
 import mediaclub.app.appwanderlust.DataModels.IndividualMessage;
 import mediaclub.app.appwanderlust.DataModels.Post;

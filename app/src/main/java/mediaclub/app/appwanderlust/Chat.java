@@ -15,12 +15,10 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -43,6 +41,7 @@ import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import mediaclub.app.appwanderlust.Adapters.ChatFragmentAdapter;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
 import mediaclub.app.appwanderlust.DataModels.ChatItem;
 import mediaclub.app.appwanderlust.RealmModels.ChatBuddy;

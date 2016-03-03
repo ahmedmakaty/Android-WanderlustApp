@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,10 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import java.util.Collections;
 import java.util.List;
 
+import mediaclub.app.appwanderlust.ChatActivity;
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.DataModels.ChatItem;
+import mediaclub.app.appwanderlust.R;
 
 /**
  * Created by Bloom on 15/1/2016.

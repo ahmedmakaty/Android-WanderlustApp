@@ -1,4 +1,4 @@
-package mediaclub.app.appwanderlust;
+package mediaclub.app.appwanderlust.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,17 +18,19 @@ import java.util.List;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.DataModels.Post;
+import mediaclub.app.appwanderlust.R;
+import mediaclub.app.appwanderlust.ViewUserPost;
 
 /**
  * Created by Bloom on 15/1/2016.
  */
-public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.GroupViewHolder> {
+public class UserDiaryAdapter extends RecyclerView.Adapter<UserDiaryAdapter.GroupViewHolder> {
 
     List<Post> diary = Collections.emptyList();
     LayoutInflater layoutInflater;
     Context context;
 
-    public DiaryAdapter(Context context, List<Post> diary) {
+    public UserDiaryAdapter(Context context, List<Post> diary) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.diary = diary;
@@ -94,7 +96,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.GroupViewHol
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, ViewPostActivity.class);
+                Intent i = new Intent(context, ViewUserPost.class);
                 i.putExtra("POST",post);
                 context.startActivity(i);
             }
@@ -164,14 +166,13 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.GroupViewHol
             description = (TextView) itemView.findViewById(R.id.description);
 
             Typeface myFont = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Bold.ttf");
-
             Typeface helvetica = Typeface.createFromAsset(context.getAssets(), "fonts/Helvetica LT.ttf");
             Typeface helveticaBold = Typeface.createFromAsset(context.getAssets(), "fonts/Helvetica LT Bold.ttf");
             title.setTypeface(helveticaBold);
-            description.setTypeface(helvetica);
             day.setTypeface(helvetica);
             month.setTypeface(helvetica);
             year.setTypeface(helvetica);
+            description.setTypeface(helvetica);
 
 
             image = (ImageView) itemView.findViewById(R.id.image);
