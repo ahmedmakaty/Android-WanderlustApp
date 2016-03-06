@@ -126,6 +126,8 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                adapter = new MessageAdapter(ChatActivity.this, messages, ChatActivity.this);
+                list.setAdapter(adapter);
                 String msg = message.getText().toString();
 
                 if (!msg.matches("")) {

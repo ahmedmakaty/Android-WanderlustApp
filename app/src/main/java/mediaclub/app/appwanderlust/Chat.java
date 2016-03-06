@@ -278,6 +278,7 @@ public class Chat extends Fragment {
 
     private void getLocalHistory() {
 
+        messages.clear();
         RealmResults<ChatBuddy> buddies = realm.where(ChatBuddy.class).equalTo("id", id).findAll();
 
         for (ChatBuddy c : buddies) {
