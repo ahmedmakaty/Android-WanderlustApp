@@ -11,8 +11,11 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
+import io.realm.Realm;
 import mediaclub.app.appwanderlust.ChatActivity;
+import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.MainActivity;
+import mediaclub.app.appwanderlust.RealmModels.ChatMessage;
 import mediaclub.app.appwanderlust.app.Config;
 
 /**
@@ -22,10 +25,18 @@ public class MyGcmPushReceiver extends GcmListenerService {
 
     public static final String PREF_FILE_NAME = "mediaclub.app.appwanderlust.preferences";
     public static final String KEY_FLAG_BACK_NOT = "start_chat";
+    public static final String KEY_USER_ID = "user_id";
 
     private static final String TAG = MyGcmPushReceiver.class.getSimpleName();
 
     private NotificationUtils notificationUtils;
+    String userId;
+    Realm realm;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 
     /**
      * Called when message is received.
@@ -48,6 +59,21 @@ public class MyGcmPushReceiver extends GcmListenerService {
         Log.e(TAG, "message: " + message);
         Log.e(TAG, "image: " + image);
         Log.e(TAG, "timestamp: " + timestamp);
+
+        userId = readFromPreferences(AppController.getInstance().getApplicationContext(), KEY_USER_ID, "id kda");
+        realm = Realm.getDefaultInstance();
+
+        ChatMessage cMessage = new ChatMessage();
+        cMessage.setKey(userId + "_" + id + "_" + timestamp);
+        cMessage.setUser_id(userId);
+        cMessage.setOther_id(id);
+        cMessage.setMessage(message);
+        cMessage.setDate(timestamp);
+        cMessage.setType(false);
+
+        realm.beginTransaction();
+        realm.copyToRealm(cMessage);
+        realm.commitTransaction();
 
         if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
 

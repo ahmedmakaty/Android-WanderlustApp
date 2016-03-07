@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,10 +38,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import mediaclub.app.appwanderlust.Adapters.DiaryAdapter;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
 import mediaclub.app.appwanderlust.DataModels.IndividualMessage;
 import mediaclub.app.appwanderlust.DataModels.Post;
+import mediaclub.app.appwanderlust.RealmModels.DiaryPost;
 import mediaclub.app.appwanderlust.app.Config;
 import mediaclub.app.appwanderlust.gcm.NotificationUtils;
 
@@ -63,6 +67,7 @@ public class Diary extends Fragment {
     LinearLayout addDiary;
     String id;
     TextView btnText;
+    Realm realm;
 
 
     public Diary() {
@@ -76,6 +81,8 @@ public class Diary extends Fragment {
         // Inflate the layout for this fragment
 
         view = inflater.inflate(R.layout.fragment_fragment4, container, false);
+
+        realm = Realm.getDefaultInstance();
 
         list = (RecyclerView) view.findViewById(R.id.recyclerview);
         noDiary = (TextView) view.findViewById(R.id.noDiary);
@@ -289,22 +296,35 @@ public class Diary extends Fragment {
                             diary.clear();
                             try {
                                 JSONArray posts = obj.getJSONArray("posts");
-                                for(int i =0;i<posts.length();i++){
+                                for (int i = 0; i < posts.length(); i++) {
                                     JSONObject ob = posts.getJSONObject(i);
                                     String id = ob.getString("post_id");
                                     String title = ob.getString("title");
                                     String description = ob.getString("post");
                                     String date = ob.getString("date");
                                     String image = ob.getString("pic_url");
-                                    diary.add(new Post(id,date,title,description,image));
+                                    diary.add(new Post(id, date, title, description, image));
                                 }
-                                adapter = new DiaryAdapter(getContext(), diary);
-                                list.setAdapter(adapter);
+
                                 adapter.notifyDataSetChanged();
-                                if(diary.size() > 0){
+                                if (diary.size() > 0) {
                                     noDiary.setVisibility(View.GONE);
                                     list.setVisibility(View.VISIBLE);
                                 }
+
+                                for (Post p : diary) {
+                                    DiaryPost dPost = new DiaryPost();
+                                    dPost.setId(p.getId());
+                                    dPost.setUser_id(id);
+                                    dPost.setTitle(p.getTitle());
+                                    dPost.setPost(p.getDescription());
+                                    dPost.setDate(p.getDate());
+
+                                    realm.beginTransaction();
+                                    realm.copyToRealmOrUpdate(dPost);
+                                    realm.commitTransaction();
+                                }
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -341,6 +361,9 @@ public class Diary extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        getLocalDiary();
+
         getPosts();
 
         // register GCM registration complete receiver
@@ -351,6 +374,22 @@ public class Diary extends Fragment {
         // by doing this, the activity will be notified each time a new message arrives
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(mRegistrationBroadcastReceiver,
                 new IntentFilter(Config.PUSH_NOTIFICATION));
+    }
+
+    private void getLocalDiary() {
+
+        diary.clear();
+        RealmResults<DiaryPost> dPosts = realm.where(DiaryPost.class).equalTo("user_id", id).findAll();
+        //Toast.makeText(getContext(), dPosts.size() + "", Toast.LENGTH_SHORT).show();
+
+        for (DiaryPost dP : dPosts) {
+            diary.add(new Post(dP.getId(), dP.getDate(), dP.getTitle(), dP.getPost(), ""));
+        }
+        adapter.notifyDataSetChanged();
+        if (diary.size() > 0) {
+            noDiary.setVisibility(View.GONE);
+            list.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

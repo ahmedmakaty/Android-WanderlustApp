@@ -282,7 +282,7 @@ public class Chat extends Fragment {
         RealmResults<ChatBuddy> buddies = realm.where(ChatBuddy.class).equalTo("id", id).findAll();
 
         for (ChatBuddy c : buddies) {
-            messages.add(new ChatItem(c.getId(), c.getNickname(), "", c.getLast_message(), c.getCounter(), c.getDate()));
+            messages.add(new ChatItem(c.getOtherId(), c.getNickname(), "", c.getLast_message(), c.getCounter(), c.getDate()));
         }
         adapter.notifyDataSetChanged();
         if (messages.size() > 0) {

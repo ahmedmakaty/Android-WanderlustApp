@@ -26,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -43,10 +44,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import mediaclub.app.appwanderlust.Adapters.MessageAdapter;
 import mediaclub.app.appwanderlust.Controller.AppController;
 import mediaclub.app.appwanderlust.Controller.CustomRequest;
+import mediaclub.app.appwanderlust.DataModels.ChatItem;
 import mediaclub.app.appwanderlust.DataModels.Message;
+import mediaclub.app.appwanderlust.RealmModels.ChatBuddy;
+import mediaclub.app.appwanderlust.RealmModels.ChatMessage;
 import mediaclub.app.appwanderlust.app.Config;
 
 public class ChatActivity extends AppCompatActivity {
@@ -55,6 +61,7 @@ public class ChatActivity extends AppCompatActivity {
     public static final String PREF_FILE_NAME = "mediaclub.app.appwanderlust.preferences";
     public static final String KEY_USER_ID = "user_id";
 
+    Realm realm;
     Toolbar toolbar;
     TextView title;
     ListView list;
@@ -71,6 +78,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        realm = Realm.getDefaultInstance();
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         title = (TextView) findViewById(R.id.toolbar_title);
@@ -97,6 +105,9 @@ public class ChatActivity extends AppCompatActivity {
 
         noMessage.setVisibility(View.GONE);
         list.setVisibility(View.VISIBLE);
+
+        adapter = new MessageAdapter(ChatActivity.this, messages, ChatActivity.this);
+        list.setAdapter(adapter);
 
         //Toast.makeText(ChatActivity.this, "created", Toast.LENGTH_SHORT).show();
 
@@ -128,12 +139,12 @@ public class ChatActivity extends AppCompatActivity {
 
                 adapter = new MessageAdapter(ChatActivity.this, messages, ChatActivity.this);
                 list.setAdapter(adapter);
-                String msg = message.getText().toString();
+                final String msg = message.getText().toString();
 
                 if (!msg.matches("")) {
 
                     long time = System.currentTimeMillis();
-                    String date = Long.toString(time);
+                    final String date = Long.toString(time);
 
 
                     message.setText(null);
@@ -189,6 +200,18 @@ public class ChatActivity extends AppCompatActivity {
                                             e.printStackTrace();
                                         }
                                     } else {
+
+                                        ChatMessage cMessage = new ChatMessage();
+                                        cMessage.setKey(id + "_" + otherId + "_" + date);
+                                        cMessage.setUser_id(id);
+                                        cMessage.setOther_id(otherId);
+                                        cMessage.setMessage(msg);
+                                        cMessage.setDate(date);
+                                        cMessage.setType(true);
+
+                                        realm.beginTransaction();
+                                        realm.copyToRealmOrUpdate(cMessage);
+                                        realm.commitTransaction();
 
                                         //Toast.makeText(ChatActivity.this, obj.toString(), Toast.LENGTH_SHORT).show();
                                     }
@@ -370,8 +393,6 @@ public class ChatActivity extends AppCompatActivity {
                                     //Toast.makeText(getContext(), user.toString() + " " + lMessage.toString() + " " + counter, Toast.LENGTH_SHORT).show();
                                     //users.add(new User(name,id,image,nationality,distance,nickname));
                                 }
-                                adapter = new MessageAdapter(ChatActivity.this, messages, ChatActivity.this);
-                                list.setAdapter(adapter);
                                 adapter.notifyDataSetChanged();
                                 if (messages.size() > 0) {
                                     noMessage.setVisibility(View.GONE);
@@ -440,6 +461,8 @@ public class ChatActivity extends AppCompatActivity {
         //Toast.makeText(ChatActivity.this, otherId + " " + otherNickname, Toast.LENGTH_SHORT).show();
         id = readFromPreferences(ChatActivity.this, KEY_USER_ID, "id kda");
 
+        getLocalHistory();
+
         clearUnread();
         getHistory();
 
@@ -451,6 +474,20 @@ public class ChatActivity extends AppCompatActivity {
         // by doing this, the activity will be notified each time a new message arrives
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
                 new IntentFilter(Config.PUSH_NOTIFICATION));
+    }
+
+    private void getLocalHistory() {
+        messages.clear();
+        RealmResults<ChatMessage> cMessages = realm.where(ChatMessage.class).equalTo("user_id", id).equalTo("other_id", otherId).findAll();
+        Toast.makeText(ChatActivity.this, cMessages.size()+"", Toast.LENGTH_SHORT).show();
+        for (ChatMessage c : cMessages) {
+            messages.add(new Message(c.getMessage(),c.getDate(),c.getType()));
+        }
+        adapter.notifyDataSetChanged();
+        if (messages.size() > 0) {
+            noMessage.setVisibility(View.GONE);
+            list.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
