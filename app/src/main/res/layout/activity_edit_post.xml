@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
+    android:orientation="vertical"
     tools:context="mediaclub.app.appwanderlust.AddDiaryActivity">
 
     <include
@@ -49,23 +49,23 @@
 
             <TextView
                 android:id="@+id/images_title"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Images"
-                android:textStyle="bold"
                 android:textColor="#BDBDBD"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <View
                 android:id="@+id/line10"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_above="@+id/textkda"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_above="@+id/textkda"
                 android:layout_marginTop="5dp"
                 android:background="@color/colorPrimaryDark" />
 
@@ -73,8 +73,8 @@
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:padding="5dp"
                 android:layout_margin="5dp"
+                android:padding="5dp"
                 android:scrollbars="vertical" />
         </LinearLayout>
     </ScrollView>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView submit;
     String id;
     Realm realm;
+    Typeface helvetica, helveticaBold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,14 @@ public class RegisterActivity extends AppCompatActivity {
         emailField = (EditText) findViewById(R.id.email);
         mobileField = (EditText) findViewById(R.id.mobile);
         submit = (TextView) findViewById(R.id.submit);
+
+        helvetica = Typeface.createFromAsset(getAssets(), "fonts/Helvetica LT.ttf");
+        helveticaBold = Typeface.createFromAsset(getAssets(), "fonts/Helvetica LT Bold.ttf");
+
+        submit.setTypeface(helveticaBold);
+        nicknameField.setTypeface(helvetica);
+        passwordField.setTypeface(helvetica);
+        emailField.setTypeface(helvetica);
 
         countries = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla",
 
@@ -136,6 +147,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
         spinner.setAdapter(adapter);
+        int index = Arrays.asList(countries).indexOf("United Kingdom");
+        spinner.setSelection(index);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,10 +157,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String nickname = nicknameField.getText().toString();
                 String email = emailField.getText().toString();
                 String password = passwordField.getText().toString();
-                String mobile = mobileField.getText().toString();
+                //String mobile = mobileField.getText().toString();
                 String country = spinner.getSelectedItem().toString();
 
-                if (nickname.matches("") || email.matches("") || password.matches("") || mobile.matches("")) {
+                if (nickname.matches("") || email.matches("") || password.matches("")) {
                     new AlertDialog.Builder(RegisterActivity.this)
                             .setTitle("Error")
                             .setMessage("Empty fields, Please make sure you enter all the requested values")

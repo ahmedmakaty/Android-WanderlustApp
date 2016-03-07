@@ -331,7 +331,7 @@ public class Profile extends Fragment {
                                     name.setText(user.getString("fname") + " " + user.getString("lname"));
                                 }
                                 country.setText(user.getString("country"));
-                                if (!user.getString("about").matches("") && !user.getString("about").matches("")) {
+                                if (!user.getString("about").matches("") && !user.getString("about").matches("null")) {
                                     about.setText(user.getString("about"));
                                 }
                                 if (!user.getString("traveltext").matches("null")) {

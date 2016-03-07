@@ -1,6 +1,7 @@
 package mediaclub.app.appwanderlust.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mediaclub.app.appwanderlust.Controller.AppController;
+import mediaclub.app.appwanderlust.ImagePreview;
 import mediaclub.app.appwanderlust.R;
 
 /**
@@ -47,7 +49,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GroupViewHolde
     @Override
     public void onBindViewHolder(final GroupViewHolder holder, final int position) {
 
-        String url = images.get(position);
+        final String url = images.get(position);
         //holder.image.setImageResource(R.drawable.ic_pp);
 
         ImageLoader imageLoader = AppController.getInstance().getImageLoader();
@@ -69,6 +71,15 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.GroupViewHolde
                 }
             }
         },2000,1200);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ImagePreview.class);
+                i.putExtra("URL",url);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

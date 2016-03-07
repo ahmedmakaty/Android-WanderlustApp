@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Looper;
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String KEY_USER_NICKNAME = "nickname";
     public static final String KEY_LOGGED = "logged";
 
-    TextView join, login;
+    TextView join, login,que,facebookText;
     double latitude = 0;
     double longitude = 0;
     EditText emailField, passwordField;
@@ -98,9 +99,21 @@ public class LoginActivity extends AppCompatActivity {
 
         join = (TextView) findViewById(R.id.join);
         login = (TextView) findViewById(R.id.login);
+        que = (TextView) findViewById(R.id.que);
+        facebookText = (TextView) findViewById(R.id.facebook_text);
         emailField = (EditText) findViewById(R.id.email);
         passwordField = (EditText) findViewById(R.id.password);
         facebook = (LinearLayout) findViewById(R.id.facebook_button);
+
+        Typeface helvetica = Typeface.createFromAsset(getAssets(), "fonts/Helvetica LT.ttf");
+        Typeface helveticaBold = Typeface.createFromAsset(getAssets(), "fonts/Helvetica LT Bold.ttf");
+
+        join.setTypeface(helveticaBold);
+        login.setTypeface(helveticaBold);
+        facebookText.setTypeface(helveticaBold);
+        que.setTypeface(helvetica);
+        emailField.setTypeface(helvetica);
+        passwordField.setTypeface(helvetica);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 

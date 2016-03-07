@@ -418,6 +418,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentTransaction.commit();
                 title.setText("Diary");
                 break;
+            case R.id.nav_item_6:
+                //Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                String id = readFromPreferences(MainActivity.this, KEY_USER_ID, "id");
+
+                RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+                String url = "http://appwanderlust.com/appapi/set_user_offline.php";
+
+                final ProgressDialog pDialog = new ProgressDialog(MainActivity.this);
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id);
+
+                CustomRequest jsonObjReq = new CustomRequest(Request.Method.POST,
+                        url, params,
+                        new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                //Log.d(TAG, response.toString());
+                                JSONObject obj = response;
+                                boolean error = false;
+                                try {
+                                    error = Boolean.valueOf(obj.getString("ecode"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                if (error) {
+                                    try {
+                                        new AlertDialog.Builder(MainActivity.this)
+                                                .setTitle("Error")
+                                                .setMessage(obj.getString("error"))
+                                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        // continue with delete
+                                                    }
+                                                })
+                                                .show();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                } else {
+
+                                    saveToPreferences(MainActivity.this, KEY_LOGGED, "false");
+                                    saveToPreferences(MainActivity.this, KEY_NOTIFICATIONS, "");
+                                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(i);
+                                    //Toast.makeText(MainActivity.this, obj.toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        //Toast.makeText(MainActivity.this, error.getMessage() + "hi", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 7, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                rq.add(jsonObjReq);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

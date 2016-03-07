@@ -28,23 +28,17 @@
 
     </group>
 
-    <!--<group-->
-        <!--android:id="@+id/second_group"-->
-        <!--android:checkableBehavior="single">-->
-        <!--<item-->
-            <!--android:id="@+id/nav_item_5"-->
-            <!--android:title="Group Label">-->
-            <!--<menu>-->
-                <!--<item-->
-                    <!--android:id="@+id/nav_item_6"-->
-                    <!--android:icon="@drawable/ic_favorite_black_24dp"-->
-                    <!--android:title="Favorites" />-->
-
-                <!--<item-->
-                    <!--android:id="@+id/nav_item_7"-->
-                    <!--android:icon="@drawable/ic_build_black_24dp"-->
-                    <!--android:title="Settings" />-->
-            <!--</menu>-->
-        <!--</item>-->
-    <!--</group>-->
+    <group
+        android:id="@+id/second_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_5"
+            android:title="Checkout">
+            <menu>
+                <item
+                    android:id="@+id/nav_item_6"
+                    android:title="Logout" />
+            </menu>
+        </item>
+    </group>
 </menu>

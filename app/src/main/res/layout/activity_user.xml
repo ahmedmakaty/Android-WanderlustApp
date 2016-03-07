@@ -21,24 +21,25 @@
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:orientation="vertical">
-        <ImageView
-            android:id="@+id/cover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxHeight="150dp"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_cover"
-            android:background="#EEEEEE"/>
+
+            <ImageView
+                android:id="@+id/cover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#EEEEEE"
+                android:maxHeight="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_cover" />
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="70dp"
-            android:layout_marginBottom="10dp"
             android:fillViewport="true">
 
             <LinearLayout
@@ -91,32 +92,32 @@
                         android:padding="5dp" />
 
                     <RadioGroup
+                        android:id="@+id/radioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
-                        android:id="@+id/radioGroup"
+                        android:layout_gravity="center"
                         android:orientation="horizontal"
-                        android:layout_gravity="center">
+                        android:weightSum="1">
 
                         <RadioButton
+                            android:id="@+id/radioButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Male"
-                            android:id="@+id/radioButton"
                             android:layout_gravity="center_horizontal"
                             android:checked="true"
-                            android:textSize="16sp"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:text="Male"
+                            android:textSize="16sp" />
 
                         <RadioButton
+                            android:id="@+id/radioButton2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Female"
-                            android:id="@+id/radioButton2"
                             android:layout_gravity="center_horizontal"
+                            android:layout_weight="0.13"
                             android:checked="false"
-                            android:textSize="16sp"
-                            android:layout_weight="0.13" />
+                            android:text="Female"
+                            android:textSize="16sp" />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -130,109 +131,112 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nationality"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <Spinner
+                        android:id="@+id/spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/spinner"
-                        android:background="@drawable/edit_input_border"
                         android:layout_marginLeft="5dp"
+                        android:background="@drawable/edit_input_border"
                         android:gravity="center"></Spinner>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/about_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="About me"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
+
                     <EditText
                         android:id="@+id/about"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:layout_marginTop="3dp"
                         android:layout_marginLeft="10dp"
-                        android:hint="Write someting about you"
-                        android:background="@drawable/edit_input_border"/>
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/edit_input_border"
+                        android:hint="Write someting about yourself"
+                        android:padding="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/travel_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="I travel to"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
+
                     <EditText
                         android:id="@+id/travel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:layout_marginTop="3dp"
                         android:layout_marginLeft="10dp"
-                        android:hint="Write someting about where you travel"
-                        android:background="@drawable/edit_input_border"/>
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/edit_input_border"
+                        android:hint="Where do you usually travel?"
+                        android:padding="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/looking_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Looking for"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
+
                     <EditText
                         android:id="@+id/looking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:layout_marginTop="3dp"
                         android:layout_marginLeft="10dp"
-                        android:hint="I like meeting new people"
-                        android:background="@drawable/edit_input_border"/>
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/edit_input_border"
+                        android:hint="Who would you like to meet?"
+                        android:padding="5dp" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/photos_title"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="Photos"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
 
                 <View
                     android:id="@+id/line10"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_above="@+id/textkda"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_above="@+id/textkda"
                     android:layout_marginTop="2dp"
                     android:background="@color/colorPrimaryDark" />
 
@@ -240,13 +244,11 @@
                     android:id="@+id/recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:padding="5dp"
                     android:layout_margin="5dp"
+                    android:padding="5dp"
                     android:scrollbars="vertical" />
             </LinearLayout>
         </ScrollView>
-
-
 
 
     </LinearLayout>
@@ -262,22 +264,22 @@
         app:civ_border_color="#EEEEEE"
         app:civ_border_width="4dp"
         app:civ_shadow="true"
-        app:civ_shadow_radius="10"
-        app:civ_shadow_color="#BDBDBD"/>
+        app:civ_shadow_color="#BDBDBD"
+        app:civ_shadow_radius="10" />
 
     <!--<com.pkmmte.view.CircularImageView-->
-        <!--android:id="@+id/image"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_marginTop="140dp"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:padding="10dp"-->
-        <!--android:src="@drawable/ic_pp"-->
-        <!--app:border="true"-->
-        <!--app:border_color="#F4F4F4"-->
-        <!--app:border_width="4dp" />-->
+    <!--android:id="@+id/image"-->
+    <!--android:layout_width="120dp"-->
+    <!--android:layout_height="120dp"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginTop="140dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:adjustViewBounds="true"-->
+    <!--android:padding="10dp"-->
+    <!--android:src="@drawable/ic_pp"-->
+    <!--app:border="true"-->
+    <!--app:border_color="#F4F4F4"-->
+    <!--app:border_width="4dp" />-->
     <!--app:shadow="true" />-->
 </FrameLayout>
 

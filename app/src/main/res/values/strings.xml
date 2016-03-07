@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppWanderlust</string>
+    <string name="app_name">WanderlustApp</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
     <string name="facebook_app_id">530790237099280</string>

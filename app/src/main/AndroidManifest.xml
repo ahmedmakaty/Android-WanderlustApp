@@ -90,7 +90,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".FacebookNicknameActivity"></activity>
+        <activity android:name=".FacebookNicknameActivity" />
+        <activity android:name=".ImagePreview"></activity>
     </application>
 
 </manifest>

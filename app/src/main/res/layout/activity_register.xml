@@ -4,100 +4,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
+    android:background="@drawable/ic_login_background"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context="mediaclub.app.appwanderlust.RegisterActivity">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/ic_logo" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/nickname"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/input_border"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:hint="Nickname"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/input_border"
-        android:drawableLeft="@drawable/ic_lock"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp" />
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_logo" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/input_border"
-        android:drawableLeft="@drawable/ic_arrow"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:hint="Email Address"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp" />
+            <EditText
+                android:id="@+id/nickname"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/input_border"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="Nickname"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp" />
 
-    <EditText
-        android:id="@+id/mobile"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/input_border"
-        android:drawableLeft="@drawable/ic_mobile"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:hint="Mobile number"
-        android:inputType="number"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp" />
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_border"
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/spinner_layout"
-        android:gravity="center" />
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_border"
+                android:drawableLeft="@drawable/ic_arrow"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="Email Address"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp" />
 
-    <TextView
-        android:id="@+id/submit"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_border"
-        android:padding="15dp"
-        android:text="Submit"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+            <EditText
+                android:id="@+id/mobile"
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/input_border"
+                android:drawableLeft="@drawable/ic_mobile"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="Mobile number"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:visibility="gone"/>
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/spinner_layout"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/button_border"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="Submit"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
